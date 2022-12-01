@@ -34,24 +34,12 @@ public class Test {
             System.out.println(e.getMessage());
         }
 
-        Integer totalCalories = 0;
+        list.sort(Comparator.comparingInt(a -> a));
+        System.out.println("Part 1: "+ list.get(list.size()-1));
 
-        for(int i = 0; i<3; i++){
-            Optional<Integer> maxCalories = list.stream().max(Comparator.comparingInt(a -> a));
-            if (maxCalories.isPresent()) {
-                if (i==0) {
-                    System.out.println("Part 1: " + maxCalories.get());
-                }
-                totalCalories += maxCalories.get();
-                list.remove(maxCalories.get());
-            }
-        }
-
+        int totalCalories = list.get(list.size()-1) + list.get(list.size()-2) + list.get(list.size()-3);
 
         System.out.println("Part 2: " + totalCalories);
-
-
-
 
     }
 
